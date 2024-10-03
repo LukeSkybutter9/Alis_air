@@ -1,9 +1,9 @@
-package controller;
+package com.ali.bookingapi.controller;
 
-import entities.Booking;
+import com.ali.bookingapi.entities.Booking;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.BookingService;
+import com.ali.bookingapi.service.BookingService;
 
 @RestController
 @RequestMapping("/booking")
@@ -31,7 +31,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Booking> deleteBooking(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
         return null;
     }

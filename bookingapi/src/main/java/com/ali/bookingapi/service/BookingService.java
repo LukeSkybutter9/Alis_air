@@ -1,7 +1,7 @@
-package service;
+package com.ali.bookingapi.service;
 
 
-import entities.Booking;
+import com.ali.bookingapi.entities.Booking;
 
 public interface BookingService {
 

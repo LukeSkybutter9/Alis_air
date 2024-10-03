@@ -1,17 +1,16 @@
-package entities;
-
+package com.ali.flightsapi.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "booking")
+@Table (name = "flight")
 @Data
 
-public class Booking {
+public class Flight {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private String flightNumber;
     private String origin;
