@@ -39,8 +39,15 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking updateBooking(Long id, Booking bookingDetails) {
         Booking booking = bookingRespository.findById(id).orElseThrow(()-> new RuntimeException("Reserva no encontrada"));
+        Flight flight = flightServiceClient.getFlightByFlightNumber(booking.getFlightNumber());
+
+        if (flight == null) {
+            throw new RuntimeException("Vuelo no encontrado");
+        }
+
+        booking.setFlightNumber(flight.getFlightNumber());
         booking.setId(bookingDetails.getId());
-        booking.setFlightNumber(bookingDetails.getFlightNumber());
+        booking.setPassengerName(bookingDetails.getPassengerName());
         return bookingRespository.save(booking);
     }
 

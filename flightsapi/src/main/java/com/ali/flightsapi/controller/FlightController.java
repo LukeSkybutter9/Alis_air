@@ -20,6 +20,11 @@ public class FlightController {
         return ResponseEntity.ok(flightService.saveFlight(flight));
     }
 
+    @GetMapping
+    public ResponseEntity<Flight> findFlightByFlightNumber(String flightNumber) {
+        return ResponseEntity.ok(flightService.findFlightByFlightNumber(flightNumber));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Flight> findFlightById(@PathVariable Long id) {
         return ResponseEntity.ok(flightService.findFlightById(id));

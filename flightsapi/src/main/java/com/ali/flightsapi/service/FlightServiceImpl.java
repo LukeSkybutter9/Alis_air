@@ -14,6 +14,11 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    public Flight findFlightByFlightNumber(String flightNumber) {
+        return flightRepository.findByFlightNumber(flightNumber);
+    }
+
+    @Override
     public Flight saveFlight(Flight flight) {
         return flightRepository.save(flight);
     }
