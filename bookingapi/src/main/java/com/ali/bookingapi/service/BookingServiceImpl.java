@@ -1,6 +1,8 @@
 package com.ali.bookingapi.service;
 
+import com.ali.bookingapi.controller.FlightServiceClient;
 import com.ali.bookingapi.entities.Booking;
+import com.ali.bookingapi.model.Flight;
 import org.springframework.stereotype.Service;
 import com.ali.bookingapi.repository.BookingRespository;
 
@@ -8,13 +10,24 @@ import com.ali.bookingapi.repository.BookingRespository;
 public class BookingServiceImpl implements BookingService {
 
     private final BookingRespository bookingRespository;
+    private final FlightServiceClient flightServiceClient;
 
-    public BookingServiceImpl(BookingRespository bookingRespository) {
+    public BookingServiceImpl(BookingRespository bookingRespository, FlightServiceClient flightServiceClient) {
         this.bookingRespository = bookingRespository;
+        this.flightServiceClient = flightServiceClient;
     }
 
     @Override
     public Booking saveBooking(Booking booking) {
+
+        Flight flight = flightServiceClient.getFlightByFlightNumber(booking.getFlightNumber());
+
+        if (flight == null) {
+            throw new RuntimeException("Vuelo no encontrado");
+        }
+
+        booking.setFlightNumber(flight.getFlightNumber());
+
         return bookingRespository.save(booking);
     }
 
