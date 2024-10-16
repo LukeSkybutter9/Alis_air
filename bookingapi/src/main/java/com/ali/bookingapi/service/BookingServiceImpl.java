@@ -24,9 +24,9 @@ public class BookingServiceImpl implements BookingService {
 
         if (flight == null) {
             throw new RuntimeException("Vuelo no encontrado");
+        }else{
+            booking.setFlightNumber(flight.getFlightNumber());
         }
-
-        booking.setFlightNumber(flight.getFlightNumber());
 
         return bookingRespository.save(booking);
     }

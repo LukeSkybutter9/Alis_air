@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/flight")
+@RequestMapping("/flights")
 public class FlightController {
 
     private final FlightService flightService;
@@ -20,8 +20,8 @@ public class FlightController {
         return ResponseEntity.ok(flightService.saveFlight(flight));
     }
 
-    @GetMapping
-    public ResponseEntity<Flight> findFlightByFlightNumber(String flightNumber) {
+    @GetMapping("/map/{flightNumber}")
+    public ResponseEntity<Flight> findFlightByFlightNumber(@PathVariable String flightNumber) {
         return ResponseEntity.ok(flightService.findFlightByFlightNumber(flightNumber));
     }
 

@@ -1,6 +1,8 @@
 package com.ali.bookingapi.controller;
 
 import com.ali.bookingapi.entities.Booking;
+import com.ali.bookingapi.model.Flight;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ali.bookingapi.service.BookingService;
@@ -17,6 +19,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<Booking> saveBooking(@RequestBody Booking bookingEntity) {
+
         return ResponseEntity.ok(bookingService.saveBooking(bookingEntity));
     }
 
