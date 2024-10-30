@@ -15,7 +15,7 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight) {
         return ResponseEntity.ok(flightService.saveFlight(flight));
     }

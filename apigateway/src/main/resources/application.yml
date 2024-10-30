@@ -8,14 +8,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: booking_route
-          uri: lb://Booking
+        - id: bookingapi
+          uri: lb://bookingapi
           predicates:
-            - Path=/api/booking/**
-        - id: flight_route
-          uri: lb://microservicios_flight
+            - Path=/booking/**
+        - id: flightsapi
+          uri: lb://flightsapi
           predicates:
-            - Path=/api/flight/**
+            - Path=/flights/**
 eureka:
   client:
     serviceUrl:
