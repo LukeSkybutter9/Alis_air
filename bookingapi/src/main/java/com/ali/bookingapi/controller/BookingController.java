@@ -9,7 +9,7 @@ import com.ali.bookingapi.service.BookingService;
 
 @RestController
 @RequestMapping("/booking")
-public class BookingController {
+public class  BookingController {
 
     private final BookingService bookingService;
 
